@@ -5,10 +5,8 @@ project(ADCS_Eigen)
 project(EigenTest)
 
 include_directories (
-	include/eigen
+	Eigen
 )
 add_executable ( MatrixTesting 
 	ADCS_Eigen.cpp
 )
-
-add_subdirectory(../ADCS_Eigen)
