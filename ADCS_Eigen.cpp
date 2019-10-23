@@ -3,15 +3,19 @@
 
 #include "pch.h"
 #include <iostream>
-//#include <Eigen/Dense>
+#include "Eigen/Dense"
 
-using Eigen::MatrixXd;
+using Eigen::Matrix3d;
+
 int main()
 {
-	MatrixXd m(2, 2);
-	m(0, 0) = 3;
-	m(1, 0) = 2.5;
-	m(0, 1) = -1;
-	m(1, 1) = m(1, 0) + m(0, 1);
-	std::cout << m << std::endl;
+	Matrix3d m = Matrix3d::Random();
+	std::cout << "Here is the randomly generated matrix:" << std::endl;
+	std::cout << m << std::endl << std::endl;
+
+	std::cout << "Its transpose is:" << std::endl << m.transpose() << std::endl << std::endl;
+
+	std::cout << "Its inverse is:" << std::endl <<m.inverse() << std::endl << std::endl;
+
+	std::cout << "Its pseudo-inverse is:" << std::endl << m.completeOrthogonalDecomposition().pseudoInverse() << std::endl << std::endl;
 }
