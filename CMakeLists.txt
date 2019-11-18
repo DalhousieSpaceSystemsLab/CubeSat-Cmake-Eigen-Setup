@@ -6,6 +6,10 @@ project(ADCS_Eigen)	#project name
 
 include_directories (
     Eigen			# includes Eigen which is located inside the project folder
+project(MatrixTesting)
+
+include_directories (
+	Eigen
 )
 add_executable ( MatrixTesting 
     ADCS_Eigen.cpp
