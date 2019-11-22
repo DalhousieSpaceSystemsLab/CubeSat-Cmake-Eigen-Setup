@@ -3,19 +3,44 @@
 
 #include "pch.h"
 #include <iostream>
+#include <fstream>
 #include "Eigen/Dense"
 
+#define	testparse	// outputs to terminal for testing the parse function
+
+enum returnvals{FAIL, SUCCESS};
+#define IGRF_READLINES	104
+#define MAX_MN_VALUE	13
+
+/* storage arrays for g and h */
+float g_nominal[MAX_MN_VALUE][MAX_MN_VALUE];	// g[m][n]
+float h_nominal[MAX_MN_VALUE][MAX_MN_VALUE];	// h[m][n]
+
 using Eigen::Matrix3d;
+using namespace std;
 
 int main()
 {
-	Matrix3d m = Matrix3d::Random();
-	std::cout << "Here is the randomly generated matrix:" << std::endl;
-	std::cout << m << std::endl << std::endl;
+	if (Parse_IGRF()) {
+		// continue the program
+	}
+}
 
-	std::cout << "Its transpose is:" << std::endl << m.transpose() << std::endl << std::endl;
+int Parse_IGRF(void) {
+	ifstream IGRFconstants;
+	IGRFconstants.open("IGRF12.txt", ifstream::in);
 
-	std::cout << "Its inverse is:" << std::endl <<m.inverse() << std::endl << std::endl;
+	int m = 0, n = 0;
+	float
 
-	std::cout << "Its pseudo-inverse is:" << std::endl << m.completeOrthogonalDecomposition().pseudoInverse() << std::endl << std::endl;
+
+	if (!IGRFconstants) {
+#ifdef testparse
+		cout << "unable to open the IGRF file\n";
+#endif
+		return FAIL;
+	}
+	while (IGRFconstants) {
+		IGRFconstants>>
+	}
 }
